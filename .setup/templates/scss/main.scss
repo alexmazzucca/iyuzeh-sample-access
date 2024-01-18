@@ -1,0 +1,391 @@
+/*!
+// Theme Name: Site Theme
+// Author: Archer Interactive
+// Author URI: http://archerinteractive.com/
+// Description: A custom WordPress theme
+// Version: 1.0
+*/
+
+/*
+>>================================================================================>
+Table of Contents
+>>================================================================================>
+*/
+
+// 00. Partials (Imports)
+// 01. Structure
+// 02. Modifiers
+// 03. Typography
+// 04. Forms
+// 05. Components
+// 06+ Sections
+
+/*
+>>================================================================================>
+00. Partials (Imports)
+>>================================================================================>
+*/
+
+@import 'imports/variables';
+@import 'imports/normalize';
+@import 'imports/mixins';
+@import 'imports/typography';
+@import 'imports/buttons';
+@import 'imports/resets';
+@import 'imports/modifiers';
+@import 'imports/components';
+
+/*
+>>================================================================================>
+01. Structure
+>>================================================================================>
+*/
+
+/*
+ * Global site structural elements e.g. Body, Main, Containers, Sections
+ */
+
+/*
+All Resolutions
+>>------------->
+*/
+
+body {
+    background-color: $color_white;
+
+    &:before {
+        background-color: $color_white;
+    }
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: $px_site_width;
+
+    &.full-width {
+        max-width: 100%;
+    }
+}
+
+/*
+Desktop
+>>------------->
+*/
+
+@media screen and (min-width: $px_breakpoint_desktop) {
+    .container {
+        padding-left: $px_padding_desktop;
+        padding-right: $px_padding_desktop;
+    }
+
+    main {
+        > * {
+            .container {
+                padding-top: $px_spacing_desktop;
+                padding-bottom: $px_spacing_desktop;
+            }
+        }
+    }
+}
+
+/*
+Mobile
+>>------------->
+*/
+
+@media screen and (max-width: $px_breakpoint_mobile) {
+    .container {
+        padding-left: $px_padding_mobile;
+        padding-right: $px_padding_mobile;
+    }
+
+    main {
+        > * {
+            .container {
+                padding-top: $px_spacing_mobile;
+                padding-bottom: $px_spacing_mobile;
+            }
+        }
+    }
+}
+
+/*
+>>================================================================================>
+02. Modifiers
+>>================================================================================>
+*/
+
+/*
+ * Used for specific modifications e.g. orange-background, small-top-margin, etc.
+ */
+
+/*
+>>================================================================================>
+03. Typography
+>>================================================================================>
+*/
+
+/*
+ * Apply typographical settings to site
+ */
+
+/*
+All Resolutions
+>>------------->
+*/
+
+ body {
+    color: $color_black;
+ }
+ 
+::selection {
+    background: $color_black;
+    color: $color_white;
+}
+
+main {
+    p {
+        @include standard_copy;
+    }
+
+    ul {
+        @include list_1();
+    }
+}
+
+/*
+>>================================================================================>
+04. Forms
+>>================================================================================>
+*/
+
+/*
+All Resolutions
+>>------------->
+*/
+
+.user-input {
+    input:focus {
+        outline: 1px solid royalblue;
+        box-shadow: 1px 1px 8px 1px royalblue;
+    }
+}
+
+/*
+Desktop
+>>------------->
+*/
+
+@media screen and (min-width: $px_breakpoint_desktop) {
+    
+}
+
+/*
+Mobile
+>>------------->
+*/
+
+@media screen and (max-width: $px_breakpoint_mobile) {
+    
+}
+
+/*
+>>================================================================================>
+05. Components
+>>================================================================================>
+*/
+
+/*
+ * Reusable components e.g. columns, small pieces, etc.
+ */
+
+/*
+All Resolutions
+>>------------->
+*/
+
+.skip-link {
+    background: $color_black;
+    color: #fff;
+    font-weight: 700;
+    left: 50%;
+    padding: 10px;
+    position: absolute;
+    transform: translateY(-100%);
+    transition: all 0.3s;
+    z-index: 1002;
+    opacity: 0;
+
+    @at-root {
+        body:not(.page-loaded) & {
+            display: none;
+        }
+    }
+
+    &:focus {
+        transform: translateY(0%);
+        opacity: 100;
+    }
+}
+
+.columns {
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    &.vertically-centered {
+        align-items: center;
+    }
+}
+
+/*
+Desktop
+>>------------->
+*/
+
+@media screen and (min-width: $px_breakpoint_desktop) {
+    .columns {
+        &.has-static-column {
+            .static {
+                margin-left: $px_padding_desktop * 2;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+        }
+
+        &.two {
+            @include has_columns(2, $px_padding_desktop);
+        }
+
+        &.three {
+            @include has_columns(3, $px_padding_desktop);
+        }
+
+        &.four {
+            @include has_columns(4, $px_padding_desktop);
+        }
+    }    
+}
+
+/*
+Mobile
+>>------------->
+*/
+
+@media screen and (max-width: $px_breakpoint_mobile) {
+    .columns {
+        &:not(.has-mobile-columns) {
+            > *:not(:last-child) {
+                margin-bottom: $px_padding_mobile;
+            }
+        }
+        
+        &.has-mobile-columns {
+            display: flex;
+
+            &.two {
+                @include has_columns(2, $px_padding_mobile);
+            }
+
+            &.four {
+                @include has_columns(2, $px_padding_mobile);
+            }
+
+            &.five {
+                @include has_columns(3, $px_padding_mobile);
+            }
+        }
+    }
+}
+
+/*
+>>================================================================================>
+06. Sections
+>>================================================================================>
+*/
+
+/*
+>>================================================================================>
+Section: Main Header
+>>================================================================================>
+*/
+
+#main-header {
+
+    /*
+    All Resolutions
+    >>------------->
+    */
+
+    .site-logo {
+        display: block;
+
+        span {
+            @include hidden();
+        }
+    }
+
+    /*
+    Desktop
+    >>------------->
+    */
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        #burger {
+            display: none;
+        }
+    }
+
+    /*
+    Mobile
+    >>------------->
+    */
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+        #burger {
+            position: relative;
+            width: 56px;
+            height: 56px;
+
+            &:before,
+            &:after,
+            span {
+                position: absolute;
+                width: 34px;
+                height: 1px;
+                left: 11px;
+                background-color: $color_black;
+                transition: all 300ms ease;
+            }
+
+            &:before {
+                content: '';
+                top: 13px;
+
+                @at-root .menu-active & {
+                    top: 50%;
+                    transform: rotate(45deg)
+                }
+            }
+
+            &:after {
+                content: '';
+                bottom: 13px;
+
+                @at-root .menu-active & {
+                    bottom: calc(50% - 1px);
+                    transform: rotate(-45deg)
+                }
+            }
+
+            span {
+                top: 50%;
+                
+                @at-root .menu-active & {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}

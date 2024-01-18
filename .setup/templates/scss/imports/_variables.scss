@@ -1,0 +1,44 @@
+/*
+>>================================================================================>
+Variables
+>>================================================================================>
+*/
+
+/*
+Colors
+>>------------->
+*/
+
+$color_white: #ffffff;
+$color_black: #000000;
+
+/*
+Pixel Dimensions
+>>-------------->
+*/
+
+$px_site_width: 1400px;
+$px_breakpoint_desktop: 768px;
+$px_breakpoint_mobile: ($px_breakpoint_desktop - 1);
+$px_padding_desktop: 30px;
+$px_padding_mobile: 15px;
+$px_spacing_desktop: 80px;
+$px_spacing_mobile: 40px;
+
+/*
+Site Settings
+>>------------->
+*/
+
+$setting_background-color: $color_white;
+$setting_copy-color: $color_black;
+$setting_selection_copy: $color_white;
+$setting_selection_background: $color_black;
+
+/*
+Components
+>>------------->
+*/
+
+$component_modals: false;
+$component_accordions: false;

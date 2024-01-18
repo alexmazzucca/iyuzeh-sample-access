@@ -1,0 +1,74 @@
+/*
+>>================================================================================>
+Mixins
+>>================================================================================>
+*/
+
+/*
+ * Mixin: @hidden
+ * --------------------------
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+ @mixin hidden() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+/*
+ * Mixin: @scrollable
+ * --------------------------
+ * Applies some styles that make scrollable elements behave a little better
+ */
+
+@mixin scrollable() {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/*
+ * Mixin: @has_columns
+ * --------------------------
+ * Creates columns within selected parent elements
+ * $count   :   Number of columns
+ * $gutter  :   Gutter size
+ */
+
+ @mixin has_columns($count, $gutter) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    margin-left: -(calc($gutter / 2));
+    margin-right: -(calc($gutter / 2));
+
+    > * {
+        margin-left: calc($gutter / 2);
+        margin-right: calc($gutter / 2);
+        width: #{'calc('+calc(100/$count)+'% - '+$gutter+')'};
+
+        &:nth-child(n + #{($count + 1)}) {
+            margin-top: $gutter;
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        @if $count > 3 {
+            > * {
+                width: #{'calc('+calc(100/$count)+'% - '+$gutter+')'};
+
+                &:nth-child(n + #{($count + 1)}) {
+                    margin-top: $gutter;
+                }
+            }
+        }
+    }
+}

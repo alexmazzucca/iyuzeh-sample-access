@@ -1,0 +1,284 @@
+/*
+>>================================================================================>
+Mixins
+>>================================================================================>
+*/
+
+/*
+ * Mixin: @hidden
+ * --------------------------
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+@mixin hidden() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+/*
+ * Mixin: @centered
+ * --------------------------
+ * Absolutely-positioned elements become centered
+ */
+
+@mixin centered($axis) {
+    position: absolute;
+    
+    @if $axis == 'y' {
+        top: 50%;
+        transform: translateY(-50%);
+    } @else if $axis == 'x' {
+        left: 50%;
+        transform: translateX(-50%);
+    } @else if $axis == 'xy' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+/*
+ * Mixin: @scrollable
+ * --------------------------
+ * Applies some styles that make scrollable elements behave a little better
+ */
+
+@mixin scrollable() {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/*
+ * Mixin:; @bgimg
+ * --------------------------
+ * Attaches a background image
+ * User-defined width and height
+ * Includes a boolean for 2x resolution
+ * Ability to specify file extension
+ */
+
+@mixin bgimg($image, $width, $height, $retina, $extension) {
+    background-image: url('../img/' + $image + '.' + $extension);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $width + px $height + px;
+
+    @if $retina == true {
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+            background-image: url('../img/' + $image  + '@2x' + '.' + $extension);
+        }
+    }
+}
+
+/*
+ * Mixin: @has_modals
+ * --------------------------
+ * Outputs necessary styles for implementation of modal windows
+ */
+
+/*
+<section id="" class="modal">
+    <div class="window">
+        <button class="close-modal close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"/>
+            </svg>
+        </button>
+        <div class="content">
+            <p>Test</p>
+        </div>
+    </div>
+</section>
+*/
+
+ @mixin has_modals() {
+
+    .modal {
+
+        /*
+        All Resolutions
+        >>------------->
+        */
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+        background-color: rgba(0,0,0,.6);
+
+        @at-root .modal-overflow & {
+            @include scrollable();
+            
+            .window {
+                top: 20px;
+                transform: translateX(-50%) !important;
+                margin-bottom: 20px;
+            }
+        }
+
+        .window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: calc(100% - 40px);
+            max-width: 720px;
+            overflow: hidden;
+            transition: margin 500ms ease, opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            margin-top: -50px;
+        }
+
+        &.active {
+            visibility: visible;
+            opacity: 1;
+
+            .window {
+                margin: 0;
+                transform: translate(-50%,-50%);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        
+        .content {
+            background-color: rgba(255,255,255,.9);
+        }
+
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            margin-left: auto;
+            width: 45px;
+            height: 45px;
+            background-color: red;
+        }
+
+        /*
+        Desktop
+        >>------------->
+        */
+
+        @media screen and (min-width: $px_breakpoint_desktop) {
+            .content {
+               padding: 60px 30px 30px 30px;
+            }
+        }
+
+        /*
+        Mobile
+        >>------------->
+        */
+
+        @media screen and (max-width: $px_breakpoint_mobile) {
+            .content {
+                padding: 60px 20px 20px 20px;
+            }
+        }
+    }
+}
+
+/*
+ * Mixin: @has_columns
+ * --------------------------
+ * Outputs necessary styles for implementation of columns
+ */
+
+ @mixin has_columns($gutter) {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /*
+    Desktop
+    >>------------->
+    */
+
+    @media screen and (min-width: 768px) {
+        margin-left: (-($gutter / 2));
+        margin-right: (-($gutter / 2));
+
+        > * {
+            margin-left: ($gutter / 2);
+            margin-right: ($gutter / 2);
+        }
+
+        > .col-50 {
+            width: calc(50% - #{($gutter)});
+
+            &:nth-child(n+3) {
+                margin-top: $gutter;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .col-33 {
+            width: calc(33.333% - #{($gutter)});
+
+            &:nth-child(n+4) {
+                margin-top: $gutter;
+            }
+        }
+
+        > .col-25 {
+            width: calc(25% - #{($gutter)});
+
+            &:nth-child(n+5) {
+                margin-top: $gutter;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
+        .col-33 {
+            width: calc(50% - #{($gutter)});
+
+            &:nth-child(n+3) {
+                margin-top: $gutter;
+            }
+        }
+
+        > .col-25 {
+            width: calc(50% - #{($gutter)});
+
+            &:nth-child(n+3) {
+                margin-top: $gutter;
+            }
+        }
+    }
+
+    /*
+    Mobile
+    >>------------->
+    */
+
+    @media screen and (max-width: 767px) {
+        flex-wrap: nowrap;
+        flex-direction: column;
+
+        > * {
+            width: 100%;
+        }
+
+        > *:not(:last-child) {
+            margin-bottom: $px_padding_mobile;
+        }
+    }
+}

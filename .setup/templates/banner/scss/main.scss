@@ -1,0 +1,158 @@
+/*
+>>================================================================================>
+Site Variables
+>>================================================================================>
+*/
+
+/*
+Font Faces
+>>------------->
+*/
+
+$font_primary: Arial, Helvetica, sans-serif;
+$font_secondary: Arial, Helvetica, sans-serif;
+
+
+/*
+Font Weights
+>>------------->
+*/
+
+$weight_light: 300;
+$weight_regular: 400;
+$weight_medium: 500;
+$weight_semibold: 600;
+$weight_bold: 700;
+$weight_black: 900;
+
+/*
+Colors
+>>------------->
+*/
+
+$color_white: #ffffff;
+$color_black: #000000;
+
+
+/*
+>>================================================================================>
+Resets and Helper Classes
+>>================================================================================>
+*/
+
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: $font_primary;
+    background-color: $color_white;
+    color: $color_black;
+    opacity: 0;
+
+    &.loaded {
+        opacity: 1;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-style: none;
+}
+
+.sprite {
+    position: absolute;
+
+    img {
+        max-width: none;
+    }
+}
+
+#banner {
+    border: 1px solid $color_black;
+    position: relative;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/*
+>>================================================================================>
+Banner and Animated Objects
+>>================================================================================>
+*/
+
+#banner {
+    width: /* width */;
+    height: /* height */;
+    background-color: $color_white;
+}
+
+#primary-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+/*
+>>================================================================================>
+ISI
+>>================================================================================>
+*/
+
+#isi {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    background-color: $color_white;
+
+    .container {
+        padding: 10px;
+    }
+
+    a,
+    a:active,
+    a:visited,
+    a:hover {
+        text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+        margin-top: 0;
+        font-family: $font_primary;
+        color: $color_black;
+    }
+    
+    sup, sub {
+        vertical-align: baseline;
+        position: relative;
+        top: -0.4em;
+        font-size: 0.6em;
+    }
+}

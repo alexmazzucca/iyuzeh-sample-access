@@ -1,0 +1,42 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558 
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "1  👷  Develop",
+			"type": "gulp",
+			"task": "develop",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "2  🏁  Build",
+			"type": "gulp",
+			"task": "build",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "3  🚩  Commit",
+			"type": "gulp",
+			"task": "commit",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "4  📡  Deploy",
+			"type": "gulp",
+			"task": "deploy",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "5  ✉️  Release",
+			"type": "gulp",
+			"task": "release",
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}

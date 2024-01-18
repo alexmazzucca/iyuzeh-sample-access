@@ -1,0 +1,164 @@
+/*
+>>================================================================================>
+Modifiers
+>>================================================================================>
+*/
+
+.browserupgrade {
+    display: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #f2f2f2;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.visually-hidden {
+    @include hidden();
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+
+    &.full-width {
+        max-width: 100%;
+    }
+}
+
+.no-break {
+    white-space: nowrap;
+}
+
+.no-top-padding {
+    padding-top: 0 !important;
+}
+
+.no-bottom-padding {
+    padding-bottom: 0 !important;
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+picture.centered {
+    img {
+        margin: 0 auto;
+    }
+}
+
+*:not(img):not(picture).centered {
+    text-align: center;
+}
+
+.break {
+    display: block;
+}
+
+img {
+    &.centered {
+        margin: 0 auto;
+    }
+}
+
+.visually-hidden {
+    @include hidden();
+}
+
+.flex-row {
+    display: flex;
+
+    &.space-around {
+        justify-content: space-around;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    &.centered {
+        align-items: center;
+    }
+}
+
+.browserupgrade {
+    display: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+    background: #ccc;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+}
+
+/*
+Desktop
+>>---------->
+*/
+
+@media screen and (min-width: $px_breakpoint_desktop) {
+    .mobile-only {
+        display: none !important;
+    }
+
+    .no-break-desktop {
+        white-space: nowrap;
+    }
+
+    .break-desktop {
+        display: block;
+    }
+
+    img {
+        &.centered-desktop {
+            margin: 0 auto;
+        }
+    }
+
+    picture.centered-desktop {
+        img {
+            margin: 0 auto;
+        }
+    }
+}
+
+/*
+Mobile
+>>---------->
+*/
+
+@media screen and (max-width: $px_breakpoint_mobile) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .no-break-mobile {
+        white-space: nowrap;
+    }
+
+    .break-mobile {
+        display: block;
+    }
+    
+    img {
+        &.centered-mobile {
+            margin: 0 auto;
+        }
+    }
+
+    picture {
+        &.centered-mobile {
+            img {
+                margin: 0 auto;
+            }
+        }
+    }
+}

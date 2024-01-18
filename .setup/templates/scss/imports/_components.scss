@@ -1,0 +1,166 @@
+/*
+>>================================================================================>
+Components
+>>================================================================================>
+*/
+
+/*
+ * Modals
+ * --------------------------
+ * Outputs necessary styles for implementation of modal windows
+ */
+
+/*
+<section id="" class="modal">
+    <div class="window">
+        <button class="close-modal close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"/>
+            </svg>
+        </button>
+        <div class="content">
+            <p>Test</p>
+        </div>
+    </div>
+</section>
+*/
+
+@if $component_modals {
+	body {
+		&.modal-active {
+			height: 100vh;
+			overflow-y: hidden
+		}
+	}
+
+	.modal {
+
+		/*
+		All Resolutions
+		>>------------->
+		*/
+
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1000;
+		opacity: 0;
+		visibility: hidden;
+		transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+		background-color: rgba(0,0,0,.6);
+
+		@at-root .modal-overflow & {
+			@include scrollable();
+			
+			.window {
+				top: 20px;
+				transform: translateX(-50%) !important;
+				margin-bottom: 20px;
+			}
+		}
+
+		.window {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: calc(100% - 40px);
+			max-width: 720px;
+			overflow: hidden;
+			transition: margin 500ms ease, opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+			opacity: 0;
+			visibility: hidden;
+			margin-top: -50px;
+		}
+
+		&.active {
+			visibility: visible;
+			opacity: 1;
+
+			.window {
+				margin: 0;
+				transform: translate(-50%,-50%);
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		
+		.content {
+			background-color: rgba(255,255,255,.9);
+		}
+
+		.close {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			margin-left: auto;
+			width: 45px;
+			height: 45px;
+			background-color: red;
+		}
+
+		/*
+		Desktop
+		>>------------->
+		*/
+
+		@media screen and (min-width: $px_breakpoint_desktop) {
+			.content {
+				padding: 60px 30px 30px 30px;
+			}
+		}
+
+		/*
+		Mobile
+		>>------------->
+		*/
+
+		@media screen and (max-width: $px_breakpoint_mobile) {
+			.content {
+				padding: 60px 20px 20px 20px;
+			}
+		}
+	}
+}
+
+/*
+ * Accordion
+ * --------------------------
+ * Creates accordion GUI
+ */
+
+/*
+<div class="accordion">
+    <div class="accordion-trigger">
+        <h3 class="heading-3">Heading</h3>
+    </div>
+    <div class="accordion-content">
+        <div>
+            <p>Content</p>
+        </div>
+    </div>
+</div>
+*/
+
+@if $component_accordions {
+	.accordion {
+        .accordion-trigger {
+            cursor: pointer;
+        }
+
+        .accordion-content {
+            height: 0;
+            overflow: hidden;
+
+            &.expanded {
+                height: auto !important;
+            }
+
+            > div {
+				display: table;
+			}
+        }
+    }
+}

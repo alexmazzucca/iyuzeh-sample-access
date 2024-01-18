@@ -1,0 +1,85 @@
+{
+    "SASS ruleset": {
+        "scope": "scss",
+        "prefix": "Kindling: Ruleset",
+        "body": [
+            "/*",
+            ">>================================================================================>",
+            "${1:Title}",
+            ">>================================================================================>",
+            "*/",
+            "",
+            "#${2:ID} {",
+            "",
+            "    /*",
+            "    All Resolutions",
+            "    >>------------->",
+            "    */",
+            "",
+            "    /*",
+            "    Desktop",
+            "    >>------------->",
+            "    */",
+            "",
+            "    @media screen and (min-width: $$px_breakpoint_desktop) {",
+            "        ",
+            "    }",
+            "",
+            "    /*",
+            "    Mobile",
+            "    >>------------->",
+            "    */",
+            "",
+            "    @media screen and (max-width: $$px_breakpoint_mobile) {",
+            "        ",
+            "    }",
+            "}"
+        ],
+        "description": "SASS ruleset"
+    },
+    "Configure 'has_columns' SASS mixin": {
+        "scope": "scss",
+        "prefix": "Kindling: Columns",
+        "body": [
+            "@include has_columns(${1:Columns}, ${2:Gutter}px"
+        ],
+        "description": "Configure 'has_column's SASS mixin"
+    },
+    "HTML markup for section": {
+        "scope": "html,php",
+        "prefix": "Kindling: Section",
+        "body": [
+            "<!--",
+            ">>================================================================================>",
+            "${1:Title}",
+            ">>================================================================================>",
+            "-->",
+            "",
+            "<section id=\"${2:ID}\">",
+            "    <div class=\"container\"></div>",
+            "</section>"
+        ],
+        "description": "HTML markup for section"
+    },
+    "HTML markup for high-resolution image": {
+        "scope": "html,php",
+        "prefix": "Kindling: Image @2x",
+        "body": [
+            "<picture>",
+            "   <source srcset=\"${1:Path}.${2:Extension}, ${1:Path}@2x.${2:Extension} 2x\">",
+            "   <img src=\"${1:Path}.${2:Extension}\" alt=\"${3:}\">",
+            "</picture>"
+        ],
+        "description": "HTML markup for high-resolution image"
+    },
+    "CSS markup for high-resolution image": {
+        "scope": "scss",
+        "prefix": "Kindling: @2x Media Query",
+        "body": [
+            "@media only screen and (-o-min-device-pixel-ratio: 5/4), only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min--moz-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 1.25dppx) {",
+            "   background-image:url(${1:Path});",
+            "}"
+        ],
+        "description": "CSS media query with background image for high-resolution image"
+    }
+}

@@ -1,0 +1,239 @@
+/*
+>>================================================================================>
+Typography
+>>================================================================================>
+*/
+
+/*
+Font Imports
+>>--------->
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*
+Font Faces
+>>-------->
+*/
+
+$font_primary: 'Roboto', sans-serif;
+$font_secondary: 'Oswald', sans-serif;
+
+/*
+Font Weights
+>>---------->
+*/
+
+$weight_light: 300;
+$weight_regular: 400;
+$weight_medium: 500;
+$weight_semibold: 600;
+$weight_bold: 700;
+$weight_black: 900;
+
+/*
+Resets
+>>------------------->
+*/
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-style: normal;
+    margin-top: 0;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    padding: 0 0 0 20px;
+}
+
+/*
+Typographic Modifiers
+>>------------------->
+*/
+
+.black {
+    color: $color_black;
+}
+
+.white {
+    color: $color_white;
+}
+
+.no-bullets {
+    list-style: none;
+    padding-left: 0;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/*
+Standard Copy Styles
+>>------------------------------------------->
+*/
+
+@mixin standard_copy {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        font-size: 18px;
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+/*
+Heading 1 Styles
+>>-------------->
+*/
+
+@mixin heading-1 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        font-size: 45px;
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-1 {
+    @include heading-1;
+}
+
+/*
+Heading 2 Styles
+>>-------------->
+*/
+
+@mixin heading-2 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        font-size: 35px;
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-2 {
+    @include heading-2;
+}
+
+/*
+Heading 3 Styles
+>>-------------->
+*/
+
+@mixin heading-3 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        font-size: 34px;
+        line-height: 57px;
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-3 {
+    @include heading-3;
+}
+
+/*
+Heading 4 Styles
+>>-------------->
+*/
+
+@mixin heading-4 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        font-size: 30px;
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-4 {
+    @include heading-4;
+}
+
+/*
+Heading 5 Styles
+>>-------------->
+*/
+
+@mixin heading-5 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-5 {
+    @include heading-5;
+}
+
+/*
+Heading 6 Styles
+>>-------------->
+*/
+
+@mixin heading-6 {
+    font-family: $font_primary;
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}
+
+.heading-6 {
+    @include heading-6;
+}
+
+/*
+List 1 Styles
+>>------------------------------------------->
+*/
+
+@mixin list_1 {
+    li {
+        @include standard_copy;
+    }
+
+    @media screen and (min-width: $px_breakpoint_desktop) {
+        
+    }
+
+    @media screen and (max-width: $px_breakpoint_mobile) {
+
+    }
+}

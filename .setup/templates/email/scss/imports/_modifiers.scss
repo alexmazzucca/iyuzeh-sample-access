@@ -1,0 +1,54 @@
+/*
+>>================================================================================>
+Modifiers
+>>================================================================================>
+*/
+
+table {
+    td {
+        &.empty {
+            line-height: 1px;
+            font-size: 1px;
+        }
+
+        &[valign="middle"] {
+            vertical-align: middle;
+        }
+    }
+}
+
+img {
+    &.centered {
+        margin: 0 auto;
+    }
+
+    &.responsive {
+        height:auto !important;
+        width: 100% !important;
+    }
+}
+
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    &.centered {
+        text-align: center;
+    }
+
+    &.no-margin {
+        margin-bottom: 0;
+    }
+
+    &.right-aligned {
+        text-align: right;
+    }
+}
+
+.no-break {
+    white-space: nowrap;
+}

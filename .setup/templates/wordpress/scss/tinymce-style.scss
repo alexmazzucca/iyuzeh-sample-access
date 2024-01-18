@@ -1,0 +1,22 @@
+/*
+>>================================================================================>
+TinyMCE WYSWYG Styles
+>>================================================================================>
+*/
+
+@import 'imports/variables';
+@import 'imports/typography';
+@import 'imports/buttons';
+
+/*
+Apply typography styles to WYSIWYG
+>>------------------------------------------->
+*/
+
+p {
+	@include standard_copy;
+}
+
+ul {
+	@include list_1();
+}
